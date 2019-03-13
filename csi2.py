@@ -1,6 +1,7 @@
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 import time
+import httplib
 sensor = Adafruit_DHT.DHT22
 
 
@@ -34,25 +35,10 @@ while 1==1:
 	rdSensor = 16
 	GPIO.setup(rdSensor,GPIO.IN)
 
-	# Light Sensor
-        ltSensor = 18
-        GPIO.setup(ltSensor,GPIO.IN)
-
-        # Flame Sensor
-        flSensor = 22
-        GPIO.setup(flSensor,GPIO.IN)
-
-        # Sound Sensing Sensor
-        soSensor = 32 
-        GPIO.setup(soSensor,GPIO.IN)
-
         # Gas Sensor
         gsSensor = 36
         GPIO.setup(gsSensor,GPIO.IN)
 
-        # Hall Effect Sensor
-        heSensor = 38
-        GPIO.setup(heSensor,GPIO.IN)
 
         # Calculate and display Distance, using ultrasonic sensor
         time.sleep(0.00001)
@@ -64,7 +50,8 @@ while 1==1:
         pulse_duration = pulse_end_time - pulse_start_time
         distance = round(pulse_duration * 17150, 2)
         print "Ultrasonic Distance:",distance,"cm"
-
+        testreq = "http://192.168.43.54:3000/?sensor=UltraSonic&sensorData=",distance
+        # httplib.HTTPConnection("http://192.168.43.54/?sensor=Ultra Sonic",80)
 
         # Display Touch sensor Value
         print "Capacitive Touch Sensor:",GPIO.input(touchSensor)
@@ -73,19 +60,19 @@ while 1==1:
         print "Rain Drop Sensor:",GPIO.input(rdSensor)
 
         # Display Light Sensor Value
-        print "Light Sensor:",GPIO.input(ltSensor)
+        # print "Light Sensor:",GPIO.input(ltSensor) // too fast for 2s
 
         # Display Flame Sensor Value
-        print "Flame Sensor:",GPIO.input(flSensor)
+        # print "Flame Sensor:",GPIO.input(flSensor) // too fast for 2s
 
         # Display Sound Sensing Sensor Value
-        print "Sound Sensing Sensor:",GPIO.input(soSensor)
+        # print "Sound Sensing Sensor:",GPIO.input(soSensor) // too fast for 2s
 
         # Display Gas Sensor Value
         print "Gas Sensor:",GPIO.input(gsSensor)
 
         # Display Hall Effect Sensor Value
-        print "Hall Effect Sensor:",GPIO.input(heSensor)
+        #  print "Hall Effect Sensor:",GPIO.input(heSensor) // too fast for 2s
 
      finally:
             GPIO.cleanup()

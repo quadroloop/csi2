@@ -30,6 +30,30 @@ while 1==1:
         touchSensor = 15
         GPIO.setup(touchSensor,GPIO.IN)
 
+	# Rain Drop Sensor
+	rdSensor = 16
+	GPIO.setup(rdSensor,GPIO.IN)
+
+	# Light Sensor
+        ltSensor = 18
+        GPIO.setup(ltSensor,GPIO.IN)
+
+        # Flame Sensor
+        flSensor = 22
+        GPIO.setup(flSensor,GPIO.IN)
+
+        # Sound Sensing Sensor
+        soSensor = 32 
+        GPIO.setup(soSensor,GPIO.IN)
+
+        # Gas Sensor
+        gsSensor = 36
+        GPIO.setup(gsSensor,GPIO.IN)
+
+        # Hall Effect Sensor
+        heSensor = 38
+        GPIO.setup(heSensor,GPIO.IN)
+
         # Calculate and display Distance, using ultrasonic sensor
         time.sleep(0.00001)
         GPIO.output(PIN_TRIGGER, GPIO.LOW)
@@ -45,7 +69,23 @@ while 1==1:
         # Display Touch sensor Value
         print "Capacitive Touch Sensor:",GPIO.input(touchSensor)
 
+        # Display Rain Drop Sensor Value
+        print "Rain Drop Sensor:",GPIO.input(rdSensor)
 
+        # Display Light Sensor Value
+        print "Light Sensor:",GPIO.input(ltSensor)
+
+        # Display Flame Sensor Value
+        print "Flame Sensor:",GPIO.input(flSensor)
+
+        # Display Sound Sensing Sensor Value
+        print "Sound Sensing Sensor:",GPIO.input(soSensor)
+
+        # Display Gas Sensor Value
+        print "Gas Sensor:",GPIO.input(gsSensor)
+
+        # Display Hall Effect Sensor Value
+        print "Hall Effect Sensor:",GPIO.input(heSensor)
 
      finally:
             GPIO.cleanup()

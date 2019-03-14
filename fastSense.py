@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import os
 import time
 
 while 1==1:
@@ -26,11 +27,9 @@ while 1==1:
 
         # displaying sensor data:
 
-         print "Light Sensor:",GPIO.input(ltSensor)
-         print "Flame Sensor:",GPIO.input(flSensor)
-         print "Sound Sensor:",GPIO.input(soSensor)
-         print "Hall Effect Sensor:",GPIO.input(heSensor)
-
+         fastSensors = 'curl -s -G "http://192.168.43.54:3000/fastSensors/?light='+str(GPIO.input(ltSensor))+'&flame='+str(GPIO.input(flSensor))+'&sound='+str(GPIO.input(soSensor))+'&hall='+str(GPIO.input(heSensor))+'"'
+         os.system(fastSensors);
+         print "Sending data for fast sensors..."
       finally:
              GPIO.cleanup()
              time.sleep(0.2)

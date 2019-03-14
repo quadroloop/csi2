@@ -12,8 +12,8 @@ while 1==1:
      humidity, temperature = Adafruit_DHT.read_retry(sensor, pinDHT22)
 
 
-     print "Temperature: ",temperature," Celcius"
-     print "Humidity: ",humidity,"%"
+     #print "Temperature: ",temperature," Celcius"
+     #print "Humidity: ",humidity,"%"
      try:
         GPIO.setmode(GPIO.BOARD)
 
@@ -50,14 +50,18 @@ while 1==1:
         pulse_duration = pulse_end_time - pulse_start_time
         distance = round(pulse_duration * 17150, 2)
         print "Ultrasonic Distance:",distance,"cm"
-        testreq = 'curl -s -G "http://192.168.1.10:3000/sendData/?sensor=UltraSonic&sensorData='+str(distance)+'"'
-        os.system(testreq)
+
+        req = 'curl -s -G "http://192.168.43.54:3000/slowData/?hum='+str(humidity)+'&temp='+str(temperature)+'&ultrasonic='+str(distance)+'&raindrop='+str(GPIO.input(rdSensor))+'&gas='+str(GPIO.input(gsSensor))+'&touch='+str(GPIO.input(touchSensor))+'"'
+
+
+        # Send data to server
+        os.system(req)
 
         # Display Touch sensor Value
-        print "Capacitive Touch Sensor:",GPIO.input(touchSensor)
+        #print "Capacitive Touch Sensor:",GPIO.input(touchSensor)
 
         # Display Rain Drop Sensor Value
-        print "Rain Drop Sensor:",GPIO.input(rdSensor)
+        #print "Rain Drop Sensor:",GPIO.input(rdSensor)
 
         # Display Light Sensor Value
         # print "Light Sensor:",GPIO.input(ltSensor) // too fast for 2s
@@ -69,7 +73,7 @@ while 1==1:
         # print "Sound Sensing Sensor:",GPIO.input(soSensor) // too fast for 2s
 
         # Display Gas Sensor Value
-        print "Gas Sensor:",GPIO.input(gsSensor)
+        #print "Gas Sensor:",GPIO.input(gsSensor)
 
         # Display Hall Effect Sensor Value
         #  print "Hall Effect Sensor:",GPIO.input(heSensor) // too fast for 2s

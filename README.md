@@ -4,7 +4,7 @@ An Electronic Sensor Interfacing platform built with python and NodeJS on Raspbe
 > csi2 is tested with Raspberry Pi Moodel B+, and supports 9 sensors in 
 total.
 
-[![prototype](https://quadroloop.github.io/bobaux/rogdrigo.jpg)](https://nodesource.com/products/nsolid)
+[![prototype](https://quadroloop.github.io/bobaux/rodrigo.jpg)](https://github.com/quadroloop/csi2)
 
 > A picture of the Raspberry Pi 3 will all 9 sensors, connected on a 
 protyping board.
@@ -15,7 +15,7 @@ protyping board.
 git clone https://github.com/quadroloop/csi2
 cd csi2
 sudo python csi2.py
-sudo python fastSensors.py
+sudo python fastSense.py
 ```
 you need to modify the scripts first at the nad modify the request links 
 to your server or which ever destination, or method it needs to call.

@@ -36,7 +36,7 @@ to your server or which ever destination, or method it needs to call.
 
 ### Dashboard:
 
-> this project is connected to a Dashbaord Web Application built on 
+> this project is connected to a Dashboard Web Application built on 
 NodeJS, link to the that project can be found below.
 
  https://github.com/quadroloop/morphDash 

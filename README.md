@@ -8,9 +8,7 @@ total.
 
 > A picture of the Raspberry Pi 3 will all 9 sensors, connected on a 
 protyping board.
-
 ### Installation: 
-
 ```sh
 git clone https://github.com/quadroloop/csi2
 cd csi2

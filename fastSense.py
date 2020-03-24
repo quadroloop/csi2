@@ -3,7 +3,6 @@ import os
 import time
 
 while 1==1:
-      # Special csi2 Script for reading data from faster sensor
 
       try:
 
